@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.UbahActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_judul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Ubah Data Aktor"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_corner"
+            android:drawableStart="@drawable/ic_person"
+            android:drawablePadding="8dp"
+            android:hint="Nama Aktor"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_judul" />
+
+        <EditText
+            android:id="@+id/et_tempat_lahir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_corner"
+            android:drawableStart="@drawable/ic_home"
+            android:drawablePadding="8dp"
+            android:hint="Tempat Lahir"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_nama" />
+
+        <EditText
+            android:id="@+id/et_tanggal_lahir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_corner"
+            android:cursorVisible="false"
+            android:drawableStart="@drawable/ic_calendar"
+            android:drawablePadding="8dp"
+            android:focusable="false"
+            android:hint="Tanggal Lahir"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_tempat_lahir" />
+
+        <EditText
+            android:id="@+id/et_tahun_aktif"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_corner"
+            android:drawableStart="@drawable/ic_trend"
+            android:drawablePadding="8dp"
+            android:hint="Tahun Aktif"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_tanggal_lahir" />
+
+        <EditText
+            android:id="@+id/et_pekerjaan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_corner"
+            android:drawableStart="@drawable/ic_work"
+            android:drawablePadding="8dp"
+            android:hint="Pekerjaan"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_tahun_aktif" />
+
+
+        <EditText
+            android:id="@+id/et_penghargaan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_corner"
+            android:drawableStart="@drawable/ic_star"
+            android:drawablePadding="8dp"
+            android:hint="Penghargaan"
+            android:inputType="text"
+            android:maxLines="10"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_pekerjaan" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_ubah_foto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="20dp"
+            android:padding="12dp"
+            android:text="  Upload Foto  "
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:cornerRadius="15dp"
+            app:layout_constraintStart_toStartOf="@id/et_tempat_lahir"
+            app:layout_constraintTop_toBottomOf="@id/et_penghargaan" />
+
+        <ImageView
+            android:id="@+id/iv_foto"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="7dp"
+            android:src="@drawable/ic_foto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_penghargaan" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_ubah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="60dp"
+            android:padding="12dp"
+            android:text="UBAH"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_ubah_foto" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_ubah" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
