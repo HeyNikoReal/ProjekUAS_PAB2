@@ -58,12 +58,12 @@ public class AdapterAktor extends RecyclerView.Adapter<AdapterAktor.VHAktor> {
         holder.tvTanggalLahir.setText(MA.getTanggal_lahir());
         holder.tvTahunAktif.setText(MA.getTahun_aktif());
         holder.tvPekerjaan.setText(MA.getPekerjaaan());
+        holder.tvFilm.setText(MA.getFilm());
         holder.tvPenghargaan.setText(MA.getPenghargaan());
         holder.tvFoto.setText(MA.getFoto());
         Glide.with(holder.itemView.getContext()).load(MA.getFoto()).
                 apply(new RequestOptions().override(1000, 1000)).
                 into(holder.ivFoto);
-
     }
 
     @Override
@@ -73,7 +73,7 @@ public class AdapterAktor extends RecyclerView.Adapter<AdapterAktor.VHAktor> {
 
     public class VHAktor extends RecyclerView.ViewHolder {
 
-        TextView tvId, tvNama, tvTempatLahir, tvTanggalLahir, tvTahunAktif, tvPekerjaan, tvPenghargaan, tvFoto;
+        TextView tvId, tvNama, tvTempatLahir, tvTanggalLahir, tvTahunAktif, tvPekerjaan, tvFilm, tvPenghargaan, tvFoto;
         ImageView ivFoto;
         Button btnDetail, btnUbah, btnHapus;
 
@@ -86,8 +86,10 @@ public class AdapterAktor extends RecyclerView.Adapter<AdapterAktor.VHAktor> {
             tvTanggalLahir = itemView.findViewById(R.id.tv_tanggal_lahir);
             tvTahunAktif = itemView.findViewById(R.id.tv_tahun_aktif);
             tvPekerjaan = itemView.findViewById(R.id.tv_pekerjaan);
+            tvFilm = itemView.findViewById(R.id.tv_film);
             tvPenghargaan = itemView.findViewById(R.id.tv_penghargaan);
             tvFoto = itemView.findViewById(R.id.tv_foto);
+
             ivFoto = itemView.findViewById(R.id.iv_foto);
             btnDetail = itemView.findViewById(R.id.btn_detail);
             btnUbah = itemView.findViewById(R.id.btn_ubah);
@@ -128,6 +130,7 @@ public class AdapterAktor extends RecyclerView.Adapter<AdapterAktor.VHAktor> {
                     pindah.putExtra("xTanggalLahir", tvTanggalLahir.getText().toString());
                     pindah.putExtra("xTahunAktif", tvTahunAktif.getText().toString());
                     pindah.putExtra("xPekerjaan", tvPekerjaan.getText().toString());
+                    pindah.putExtra("xFilm", tvFilm.getText().toString());
                     pindah.putExtra("xPenghargaan", tvPenghargaan.getText().toString());
                     pindah.putExtra("xFoto", tvFoto.getText().toString());
                     ctx.startActivity(pindah);
@@ -143,6 +146,7 @@ public class AdapterAktor extends RecyclerView.Adapter<AdapterAktor.VHAktor> {
                     pindah.putExtra("xTanggalLahir", tvTanggalLahir.getText().toString());
                     pindah.putExtra("xTahunAktif", tvTahunAktif.getText().toString());
                     pindah.putExtra("xPekerjaan", tvPekerjaan.getText().toString());
+                    pindah.putExtra("xFilm", tvFilm.getText().toString());
                     pindah.putExtra("xPenghargaan", tvPenghargaan.getText().toString());
                     pindah.putExtra("xFoto", tvFoto.getText().toString());
                     ctx.startActivity(pindah);

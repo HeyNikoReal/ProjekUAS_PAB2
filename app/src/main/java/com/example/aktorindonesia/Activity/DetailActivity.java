@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,7 +22,7 @@ import java.text.SimpleDateFormat;
 public class DetailActivity extends AppCompatActivity {
 
     private ImageView ivfoto;
-    private TextView tvnama, tvTempatLahir, tvTanggalLahir, tvTahunAktif, tvPekerjaan, tvPenghargaan;
+    private TextView tvnama, tvTempatLahir, tvTanggalLahir, tvTahunAktif, tvPekerjaan, tvFilm, tvPenghargaan;
 
 
     @Override
@@ -34,11 +32,12 @@ public class DetailActivity extends AppCompatActivity {
 
         ivfoto = findViewById(R.id.iv_foto);
         tvnama = findViewById(R.id.tv_nama);
-        tvPekerjaan = findViewById(R.id.tv_pekerjaan);
-        tvPenghargaan = findViewById(R.id.tv_penghargaan);
-        tvTahunAktif = findViewById(R.id.tv_tahun_aktif);
         tvTempatLahir = findViewById(R.id.tv_tempat_lahir);
         tvTanggalLahir = findViewById(R.id.tv_tanggal_lahir);
+        tvTahunAktif = findViewById(R.id.tv_tahun_aktif);
+        tvPekerjaan = findViewById(R.id.tv_pekerjaan);
+        tvFilm = findViewById(R.id.tv_film);
+        tvPenghargaan = findViewById(R.id.tv_penghargaan);
 
         Intent ambil = getIntent();
         String nama = ambil.getStringExtra("xNama");
@@ -46,6 +45,7 @@ public class DetailActivity extends AppCompatActivity {
         String tanggalLahir = ambil.getStringExtra("xTanggalLahir");
         String tahunAktif = ambil.getStringExtra("xTahunAktif");
         String pekerjaan = ambil.getStringExtra("xPekerjaan");
+        String film = ambil.getStringExtra("xFilm");
         String penghargaan = ambil.getStringExtra("xPenghargaan");
         String foto = ambil.getStringExtra("xFoto");
 
@@ -54,10 +54,11 @@ public class DetailActivity extends AppCompatActivity {
 
         setTitle(nama);
         tvnama.setText(nama);
+        tvTempatLahir.setText(tempatLahir);
         tvTahunAktif.setText(tahunAktif);
         tvPekerjaan.setText(pekerjaan);
+        tvFilm.setText(film);
         tvPenghargaan.setText(penghargaan);
-        tvTempatLahir.setText(tempatLahir);
         try {
             tvTanggalLahir.setText(outputFormat.format(inputFormat.parse(tanggalLahir)));
         } catch (ParseException e) {

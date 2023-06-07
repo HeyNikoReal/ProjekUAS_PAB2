@@ -4,12 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
+
 import android.content.Intent;
+
 import android.net.Uri;
 import android.os.Bundle;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,8 +32,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TambahActivity extends AppCompatActivity {
-    private EditText etNama, etTempatLahir, etTanggalLahir, etTahunAktif, etPekerjaan, etPenghargaan, etFoto;
-    private String nama, tempatLahir, tanggalLahir, tahunAktif, pekerjaan, penghargaan, foto;
+    private EditText etNama, etTempatLahir, etTanggalLahir, etTahunAktif, etPekerjaan, etFilm, etPenghargaan, etFoto;
+    private String nama, tempatLahir, tanggalLahir, tahunAktif, pekerjaan, film, penghargaan, foto;
     private Button btnTambah;
     private DatePickerDialog dpd;
     private String choosenDate;
@@ -47,8 +48,9 @@ public class TambahActivity extends AppCompatActivity {
         etTanggalLahir = findViewById(R.id.et_tanggal_lahir);
         etTahunAktif = findViewById(R.id.et_tahun_aktif);
         etPekerjaan = findViewById(R.id.et_pekerjaan);
+        etFilm = findViewById(R.id.et_film);
         etPenghargaan = findViewById(R.id.et_penghargaan);
-//        etFoto = findViewById(R.id.et_foto);
+        etFoto = findViewById(R.id.et_foto);
         btnTambah = findViewById(R.id.btn_tambah);
 
         etTanggalLahir.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +84,7 @@ public class TambahActivity extends AppCompatActivity {
                 tanggalLahir = etTanggalLahir.getText().toString();
                 tahunAktif = etTahunAktif.getText().toString();
                 pekerjaan = etPekerjaan.getText().toString();
+                film = etFilm.getText().toString();
                 penghargaan = etPenghargaan.getText().toString();
                 foto = etFoto.getText().toString();
 
@@ -90,15 +93,17 @@ public class TambahActivity extends AppCompatActivity {
                 } else if (tempatLahir.trim().isEmpty()) {
                     etTempatLahir.setError("Tempat Lahir Tidak Boleh Kosong");
                 } else if (tanggalLahir.trim().isEmpty()) {
-                    etTanggalLahir.setError("Tanggal Lahir Tidak Boleh Kosong");
+                    Toast.makeText(TambahActivity.this, "Tanggal Lahir Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
                 } else if (tahunAktif.trim().isEmpty()) {
                     etTahunAktif.setError("Tahun Aktif Tidak Boleh Kosong");
                 } else if (pekerjaan.trim().isEmpty()) {
                     etPekerjaan.setError("Pekerjaan Tidak Boleh Kosong");
+                } else if (film.trim().isEmpty()) {
+                    etFilm.setError("Film Yang Diperankan Tidak Boleh Kosong");
                 } else if (penghargaan.trim().isEmpty()) {
                     etPenghargaan.setError("Penghargaan Tidak Boleh Kosong");
                 } else if (foto.trim().isEmpty()) {
-                    etFoto.setError("Link Foto Tidak Boleh Kosong");
+                    etFoto.setError("URL Foto Tidak Boleh Kosong");
                 } else {
                     tambahAktor();
                 }
@@ -108,7 +113,7 @@ public class TambahActivity extends AppCompatActivity {
 
     private void tambahAktor() {
         APIRequestData ARD = RetroServer.konekRetrofit().create(APIRequestData.class);
-        Call<ModelResponse> proses = ARD.ardCreate(nama, tempatLahir, tanggalLahir, tahunAktif, pekerjaan, penghargaan, foto);
+        Call<ModelResponse> proses = ARD.ardCreate(nama, tempatLahir, tanggalLahir, tahunAktif, pekerjaan, film, penghargaan, foto);
 
         proses.enqueue(new Callback<ModelResponse>() {
             @Override
@@ -123,7 +128,6 @@ public class TambahActivity extends AppCompatActivity {
             public void onFailure(Call<ModelResponse> call, Throwable t) {
                 Toast.makeText(TambahActivity.this, "Gagal Menghubungi Server", Toast.LENGTH_SHORT).show();
             }
-
         });
     }
 

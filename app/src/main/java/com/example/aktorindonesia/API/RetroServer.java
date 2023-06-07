@@ -13,8 +13,7 @@ public class RetroServer {
             retro = new Retrofit.Builder()
                     .baseUrl(alamatServer)
                     .addConverterFactory(GsonConverterFactory.create()).build();
-        }
-        ;
+        };
         return retro;
     }
 

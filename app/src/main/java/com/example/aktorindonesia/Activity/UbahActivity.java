@@ -4,9 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -32,10 +31,10 @@ import retrofit2.Response;
 
 public class UbahActivity extends AppCompatActivity {
 
-    private EditText etNama, etTempatLahir, etTanggalLahir, etTahunAktif, etPekerjaan, etPenghargaan, etFoto;
-    private String nama, tempatLahir, tanggalLahir, tahunAktif, pekerjaan, penghargaan, foto;
+    private EditText etNama, etTempatLahir, etTanggalLahir, etTahunAktif, etPekerjaan, etFilm, etPenghargaan, etFoto;
+    private String nama, tempatLahir, tanggalLahir, tahunAktif, pekerjaan, film, penghargaan, foto;
     private Button btnUbah;
-    private String yId, yNama, yTempatLahir, yTanggalLahir, yTahunAktif, yPekerjaan, yPenghargaan, yFoto;
+    private String yId, yNama, yTempatLahir, yTanggalLahir, yTahunAktif, yPekerjaan, yFilm, yPenghargaan, yFoto;
     private DatePickerDialog dpd;
     private String choosenDate;
 
@@ -51,6 +50,7 @@ public class UbahActivity extends AppCompatActivity {
         yTanggalLahir = ambil.getStringExtra("xTanggalLahir");
         yTahunAktif = ambil.getStringExtra("xTahunAktif");
         yPekerjaan = ambil.getStringExtra("xPekerjaan");
+        yFilm = ambil.getStringExtra("xFilm");
         yPenghargaan = ambil.getStringExtra("xPenghargaan");
         yFoto = ambil.getStringExtra("xFoto");
 
@@ -59,8 +59,9 @@ public class UbahActivity extends AppCompatActivity {
         etTanggalLahir = findViewById(R.id.et_tanggal_lahir);
         etTahunAktif = findViewById(R.id.et_tahun_aktif);
         etPekerjaan = findViewById(R.id.et_pekerjaan);
+        etFilm = findViewById(R.id.et_film);
         etPenghargaan = findViewById(R.id.et_penghargaan);
-//        etFoto = findViewById(R.id.et_foto);
+        etFoto = findViewById(R.id.et_foto);
         btnUbah = findViewById(R.id.btn_ubah);
 
         etNama.setText(yNama);
@@ -68,6 +69,7 @@ public class UbahActivity extends AppCompatActivity {
         etTanggalLahir.setText(yTanggalLahir);
         etTahunAktif.setText(yTahunAktif);
         etPekerjaan.setText(yPekerjaan);
+        etFilm.setText(yFilm);
         etPenghargaan.setText(yPenghargaan);
         etFoto.setText(yFoto);
 
@@ -102,6 +104,7 @@ public class UbahActivity extends AppCompatActivity {
                 tanggalLahir = etTanggalLahir.getText().toString();
                 tahunAktif = etTahunAktif.getText().toString();
                 pekerjaan = etPekerjaan.getText().toString();
+                film = etFilm.getText().toString();
                 penghargaan = etPenghargaan.getText().toString();
                 foto = etFoto.getText().toString();
 
@@ -110,15 +113,17 @@ public class UbahActivity extends AppCompatActivity {
                 } else if (tempatLahir.trim().isEmpty()) {
                     etTempatLahir.setError("Tempat Lahir Tidak Boleh Kosong");
                 } else if (tanggalLahir.trim().isEmpty()) {
-                    etTanggalLahir.setError("Tanggal Lahir Tidak Boleh Kosong");
+                    Toast.makeText(UbahActivity.this, "Tanggal Lahir Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
                 } else if (tahunAktif.trim().isEmpty()) {
                     etTahunAktif.setError("Tahun Aktif Tidak Boleh Kosong");
                 } else if (pekerjaan.trim().isEmpty()) {
                     etPekerjaan.setError("Pekerjaan Tidak Boleh Kosong");
+                } else if (film.trim().isEmpty()) {
+                    etFilm.setError("Film Yang Diperankan Tidak Boleh Kosong");
                 } else if (penghargaan.trim().isEmpty()) {
                     etPenghargaan.setError("Penghargaan Tidak Boleh Kosong");
                 } else if (foto.trim().isEmpty()) {
-                    etFoto.setError("Link Foto Tidak Boleh Kosong");
+                    etFoto.setError("URL Foto Tidak Boleh Kosong");
                 } else {
                     ubahAktor();
                 }
@@ -128,7 +133,7 @@ public class UbahActivity extends AppCompatActivity {
 
     private void ubahAktor() {
         APIRequestData ARD = RetroServer.konekRetrofit().create(APIRequestData.class);
-        Call<ModelResponse> proses = ARD.ardUpdate(yId, nama, tempatLahir, tanggalLahir, tahunAktif, pekerjaan, penghargaan, foto);
+        Call<ModelResponse> proses = ARD.ardUpdate(yId, nama, tempatLahir, tanggalLahir, tahunAktif, pekerjaan, film, penghargaan, foto);
 
         proses.enqueue(new Callback<ModelResponse>() {
             @Override

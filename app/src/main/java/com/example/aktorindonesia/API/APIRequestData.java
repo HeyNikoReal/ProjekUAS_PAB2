@@ -21,6 +21,7 @@ public interface APIRequestData {
             @Field("tanggal_lahir") String tanggal_lahir,
             @Field("tahun_aktif") String tahun_aktif,
             @Field("pekerjaan") String pekerjaan,
+            @Field("film") String film,
             @Field("penghargaan") String penghargaan,
             @Field("foto") String foto
     );
@@ -34,6 +35,7 @@ public interface APIRequestData {
             @Field("tanggal_lahir") String tanggal_lahir,
             @Field("tahun_aktif") String tahun_aktif,
             @Field("pekerjaan") String pekerjaan,
+            @Field("film") String film,
             @Field("penghargaan") String penghargaan,
             @Field("foto") String foto
     );
